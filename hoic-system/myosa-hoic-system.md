@@ -160,7 +160,6 @@ The architecture of the HOIC bridges multiple engineering disciplines, utilizing
 
 ## Requirements / Installation
 
-To fully replicate the HOIC system from the source code, developers and researchers will require the following specific dependencies and configurations.
 
 **Hardware Requirements List:**
 * 1x ESP32 Development Board (38-pin configuration preferred)
