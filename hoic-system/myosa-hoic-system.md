@@ -29,7 +29,7 @@ The architecture is built upon a two-tiered input philosophy:
 1. **Navigational Input:** Using an MPU6050 Inertial Measurement Unit (IMU), the system continuously polls the angular velocity and acceleration of the user's head. By applying digital low-pass filtering and deadzone thresholds, the device maps intuitive head movements (pitching up/down, yawing left/right) directly to a cursor navigating a custom grid-based dashboard.
 2. **Selection Input:** An infrared obstacle avoidance sensor is focused precisely on the outer region of the user's eye. It continuously monitors the localized reflection of infrared light. When the user performs a deliberate, timed double-blink, the change in IR absorption triggers a localized state machine in the microcontroller, generating a precise "Click" command without requiring any physical force.
 
-Together, these inputs feed into an ESP32 microcontroller, which acts as a local WebSockets server, transmitting commands with zero perceivable latency to a locally hosted web application. This application utilizes high-contrast visual feedback and the browser's native Web Speech API to vocalize the user's selections, effectively giving a voice back to the voiceless.
+Together, these inputs feed into an ESP32 microcontroller, which acts as a local WebSockets server, transmitting commands with zero perceivable latency to a locally hosted web application.
 
 **Key features:**
 * **Hands-Free, Intuitive Navigation:** Translates raw inertial data into smooth, predictable UI cursor movements.
@@ -180,17 +180,5 @@ The architecture of the HOIC bridges multiple engineering disciplines, utilizing
 5. **CRITICAL STEP:** Locate the configuration block at the top of the file and replace the `ssid` and `password` variables with the exact credentials of the local Wi-Fi router you intend to use.
 6. Connect the ESP32 via USB, select the correct COM port and Board ("ESP32 Dev Module"), and click "Upload".
 
-## File Structure (Optional)
-
-The repository is organized logically to separate embedded firmware from the frontend web application.
-
-```plaintext
-/hoic-system
-├── myosa-hoic-system.md           # This primary documentation file
-├── myosa-hoic-prototype.jpeg      # Hardware physical prototype image
-├── myosa-hoic-dashboard.jpg       # Frontend user interface screenshot
-├── myosa-hoic-blockdiagram.png    # System architecture diagram
-├── myosa-hoic-demo.mp4            # Complete demonstration video
-└── /src
-    ├── hoic_master.ino            # Core ESP32 C++ firmware
-    
+## Team
+**The Alchemists, KPR Institute of Engineering and technology**
