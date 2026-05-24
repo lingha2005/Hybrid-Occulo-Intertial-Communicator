@@ -35,12 +35,12 @@ The entire system is powered by an ESP32 microcontroller, which acts as a standa
 
 ### **Images**
 <p align="center">
-<img src="/assets/images/hoic-system/myosa-hoic-hardware.jpg" width="800"><br/>
+<img src="hoic-system/myosa-hoic-hardware.jpg" width="800"><br/>
 <i>The ESP32 wired to the MPU6050, IR Sensor, and Emergency Buzzer, mounted on a lightweight glasses frame.</i>
 </p>
 
 <p align="center">
-<img src="/assets/images/hoic-system/myosa-hoic-dashboard.jpg" width="800"><br/>
+<img src="hoic-system/myosa-hoic-dashboard.jpg" width="800"><br/>
 <i>The real-time WebSocket dashboard interface served locally from the ESP32.</i>
 </p>
 
@@ -72,7 +72,7 @@ if (millis() - lastBlinkTime < 600) {
 The ESP32 is configured in Station Mode (`WIFI_STA`), connecting directly to a local router. The custom HTML, CSS, and JavaScript webpage is stored directly within the ESP32's PROGMEM (program memory), meaning the device acts as its own web server without needing a cloud backend. 
 
 <p align="center">
-<img src="/assets/images/hoic-system/myosa-hoic-blockdiagram.png" width="800"><br/>
+<img src="hoic-system/myosa-hoic-blockdiagram.png" width="800"><br/>
 <i>Block diagram illustrating the functional data, power flows, and WebSocket architecture.</i>
 </p>
 
