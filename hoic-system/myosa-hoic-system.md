@@ -194,4 +194,4 @@ The repository is organized logically to separate embedded firmware from the fro
 ├── myosa-hoic-demo.mp4            # Complete demonstration video
 └── /src
     ├── hoic_master.ino            # Core ESP32 C++ firmware
-    └── index.html                 # Main frontend application (HTML/JS/CSS combined)
+    
