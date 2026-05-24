@@ -1,7 +1,7 @@
 publishDate: 2026-05-24
 title: HOIC - Hybrid Occulo Inertial Communicator
 excerpt: A hands-free assistive communication device for immobilized users, utilizing 6-axis head tracking for zero-latency UI navigation and IR double-blink detection for selection.
-image: hoic-system/hoic-cover.jpg
+image: hoic-system/myosa-hoic-cover.jpg
 tags:
 - ESP32
 - MPU6050
@@ -11,7 +11,11 @@ tags:
 > Empowering communication through intuitive head tracking and hardware-debounced blink detection.
 
 ## Acknowledgements 
-Special thanks to the MYOSA event organizers for providing the foundational hardware kit and I2C modules that made this prototype possible.
+**Creators:** Linghadharinee A S & Lakshana S
+
+We would like to express our deepest gratitude to our mentor, **Mr. Allwyn Ganandas**, for his invaluable guidance, technical insights, and continuous support throughout this project. We also extend our sincere thanks to our institution, **KPR Institute of Engineering and Technology (Coimbatore, India)**, for fostering an environment of innovation and engineering excellence. 
+
+Finally, special thanks to the MYOSA event organizers for providing the foundational hardware kit and I2C modules that made this prototype possible.
 
 ## Overview
 The Hybrid Occulo Inertial Communicator (HOIC) is an assistive technology prototype engineered specifically for completely immobilized users (such as those with ALS, Locked-in Syndrome, or severe spinal cord injuries) who lack the fine motor skills required for traditional physical communication boards. 
@@ -31,13 +35,18 @@ The entire system is powered by an ESP32 microcontroller, which acts as a standa
 
 ### **Images**
 <p align="center">
-<img src="/assets/images/hoic-system/hardware-setup.jpg" width="800"><br/>
+<img src="/assets/images/hoic-system/myosa-hoic-hardware.jpg" width="800"><br/>
 <i>The ESP32 wired to the MPU6050, IR Sensor, and Emergency Buzzer, mounted on a lightweight glasses frame.</i>
+</p>
+
+<p align="center">
+<img src="/assets/images/hoic-system/myosa-hoic-dashboard.jpg" width="800"><br/>
+<i>The real-time WebSocket dashboard interface served locally from the ESP32.</i>
 </p>
 
 ### **Videos**
 <video controls width="100%">
-<source src="/hoic-horizontal-demo.mp4" type="video/mp4">
+<source src="/myosa-hoic-demo.mp4" type="video/mp4">
 </video>
 
 ## Features (Detailed)
@@ -52,8 +61,20 @@ A digital IR obstacle avoidance sensor is angled toward the outer corner of the 
 
 To distinguish between a natural resting blink and a deliberate selection, the software implements a non-blocking hardware timer. A "Click" command is only authorized and sent via WebSocket if two complete, distinct blinks are registered within a strict 600ms window.
 
+<pre><code>```cpp
+// Example of hardware-debounced blink detection
+if (millis() - lastBlinkTime < 600) {
+    triggerSelectCommand();
+}
+```</code></pre>
+
 ### **3. ESP32 Web Server & WebSocket Integration**
 The ESP32 is configured in Station Mode (`WIFI_STA`), connecting directly to a local router. The custom HTML, CSS, and JavaScript webpage is stored directly within the ESP32's PROGMEM (program memory), meaning the device acts as its own web server without needing a cloud backend. 
+
+<p align="center">
+<img src="/assets/images/hoic-system/myosa-hoic-blockdiagram.png" width="800"><br/>
+<i>Block diagram illustrating the functional data, power flows, and WebSocket architecture.</i>
+</p>
 
 Real-time head movements (Up, Down, Left, Right) and clicks (Select) are broadcasted continuously via the `WebSocketsServer` library. This creates a bidirectional, full-duplex communication channel between the ESP32 and the client's browser, resulting in instantaneous UI updates.
 
